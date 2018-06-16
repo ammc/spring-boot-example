@@ -17,7 +17,7 @@ node ('master') {
         echo "Container id: ${CONTAINER_ID}"
 
         sh "sudo docker exec ${CONTAINER_ID} ./gradlew build"
-        sh "sudo docker cp ${CONTAINER_ID}:/spring-boot-dummy/build/libs/spring-boot-dummy-0.1.0.jar docker/spring-boot-dummy-0.1.0.jar"
+        sh "sudo docker cp ${CONTAINER_ID}:/spring-boot-example/build/libs/spring-boot-example-0.1.0.jar docker/spring-boot-dummy-0.1.0.jar"
         sh "sudo docker stop ${CONTAINER_ID}"
         sh "sudo docker rm ${CONTAINER_ID}"
     }
