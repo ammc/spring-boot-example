@@ -25,7 +25,7 @@ node ('master') {
     stage ('Build Container with latest Build') {
         dir('docker') {
             sh "sudo docker build -t laszlocph/spring-boot-dummy:${BUILD} ."
-            sh "sudo docker push laszlocph/spring-boot-dummy:${BUILD}"
+            //sh "sudo docker push laszlocph/spring-boot-dummy:${BUILD}"
         }
     }
 }
