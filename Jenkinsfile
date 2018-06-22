@@ -1,6 +1,8 @@
 echo "Branch name: ${BRANCH_NAME}"
 BUILD = BRANCH_NAME == 'master' ? 'latest' : BRANCH_NAME
+
 echo "Build: ${BUILD}"
+
 
 node ('master') {
     checkout scm
@@ -9,6 +11,7 @@ node ('master') {
         echo "Build: ${BUILD}"
         sh "sudo docker build -t laszlocph/build-spring-boot-dummy:${BUILD} ."
     }
+    
     stage ('Build in Container') {
         def CONTAINER_ID = sh (
                 script: "sudo docker run -d --network=host laszlocph/build-spring-boot-dummy:${BUILD}",
